@@ -200,12 +200,12 @@ def show_post(post_id):
 
 @app.route("/about")
 def about():
-    return render_template("about.html",logged_in=current_user.is_authenticated)
+    return render_template("about.html", logged_in=current_user.is_authenticated)
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html",logged_in=current_user.is_authenticated)
+    return render_template("contact.html", logged_in=current_user.is_authenticated)
 
 
 @app.route("/new-post", methods=["POST", "GET"])
@@ -245,9 +245,9 @@ def edit_post(post_id):
         post.author = edit_form.author.data
         post.body = edit_form.body.data
         db.session.commit()
-        return redirect(url_for("show_post", post_id=post.id,logged_in=current_user.is_authenticated))
+        return redirect(url_for("show_post", post_id=post.id, logged_in=current_user.is_authenticated))
 
-    return render_template("make-post.html", form=edit_form,logged_in=current_user.is_authenticated)
+    return render_template("make-post.html", form=edit_form, logged_in=current_user.is_authenticated)
 
 
 @app.route("/delete/<int:post_id>")
